@@ -1,0 +1,22 @@
+services:
+          app:
+            image: micro:latest
+            build:
+              context: .
+              dockerfile: Dockerfile
+            ports:
+              - "8181:8181"
+            depends_on:
+              - service-db
+            environment:
+              - SERVER_PORT= 8181
+              - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/books_db
+
+          service-db:
+            image: postgres:latest
+            environment:
+              POSTGRES_USER: username
+              POSTGRES_PASSWORD: password
+            ports:
+              - "15432:5432"
+            restart: unless-stopped
