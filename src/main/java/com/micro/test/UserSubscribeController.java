@@ -66,7 +66,7 @@ public class UserSubscribeController {
     }
 
     @DeleteMapping("/users/{id}/subscriptions/{sup_id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long id, @PathVariable Long supId) {
+    public ResponseEntity<?> deleteUserSubscription(@PathVariable Long id, @PathVariable Long supId) {
         userService.deleteById(id);
         return ResponseEntity.ok().build();
     }
